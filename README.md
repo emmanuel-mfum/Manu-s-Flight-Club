@@ -29,6 +29,15 @@ Then the data is sent to the Flight Data class, which uses it make dictionaries 
 The result is a list of dictionaries which sent to the Notification Manager class where thanks to the class method "compare_prices()", the prices from the Tequila API are 
 compared to those from the Google Sheet. The method "compares_prices" takes a list of users (made with the Data Manager class), a list of flight infos (from the Flight Data  class) and a list of raw data from the destinations Google sheet.
 
+Small notes
+
+The data I am supposed to get from the Sheety API ( the destinations and their average flight prices) is hard coded in the Data Manager class as I didn't want to go over 
+my limit of data requests for the Sheety API.
+
+I realised that I don't have the phone numbers of my users in the second Google sheet with user informartion. This is a bit problematic for the call to the Twilio API
+in the Notification Manager class (I tested my code using only my own phone number). To solve I would have to make a new column for the user's phone number in the Google sheet,
+as well as modify a bit my code when taping into the user data in my Notification Manager class.
+
 If a lower price is found in the flight informations gathered in the Flight Data class a SMS is sent to the user alerting him of a good deal. The "send_emails()" method is also
 triggered, which using the user information from the Google sheet with user data (namely the email) will send the user an email also alerting him along with a Google Flights link.
 
